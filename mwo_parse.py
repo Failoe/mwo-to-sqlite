@@ -35,17 +35,8 @@ for f in files:
 				lines = csvfile.readlines()  # reads in all the data
 
 			# determines the type of mech from the filename
-			# I'm not proud of this
-			if 'global' in csv:
-				mechtype = 'global'
-			elif 'assault' in csv:
-				mechtype = 'assault'
-			elif 'heavy' in csv:
-				mechtype = 'heavy'
-			elif 'medium' in csv:
-				mechtype = 'medium'
-			elif 'light' in csv:
-				mechtype = 'light'
+			charts = ['global', 'assault', 'heavy', 'medium', 'light']
+			mechtype = next(chart for chart in charts if chart in csv)
 
 			for line in lines:
 				l = str(line).replace('"', '').split(',')[1:][:-1]  # formats the individual lines into a list
